@@ -51,3 +51,9 @@ By using ubuntu as a base peachOS will work the widest range of applications and
   - Document Scanner
   - Energy Statistics
 - Set gnome backgroud to the background in `/usr/share/backgrouds/peach/peach-1.png`
+
+## How to build peachOS.deb:
+- Download (and unzip) this repository
+- `chmod +x peachOS-main/DEBIAN/postinst`
+- `dpkg-deb --build peachOS-main`
+- Install this .deb package with `sudo dpkg --install peachOS-main.deb`
