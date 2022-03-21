@@ -21,7 +21,7 @@ By using ubuntu as a base peachOS will work the widest range of applications and
 ## How to setup peachOS for now (in development)
 - Install newest Ubuntu Desktop LTS version (tested for 20.04 of 22.04) (Choose minimal installation)
 - Install the files of this repo.
-- Run /usr/lib/peach/update.sh
+- Run /usr/lib/peach/install.sh
 
 ### SetUp of user workspace:
 - Install these gnome addons
