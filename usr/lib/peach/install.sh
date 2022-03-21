@@ -7,7 +7,7 @@ apt purge purge gnome-mahjongg gnome-mines gnome-sudoku cheese gnome-todo gnome-
 apt install flatpak alacarte timeshift celluloid vim htop -y
 snap remove firefox
 apt autoremove --purge -y
-apt upgrade -y
+apt dist-upgrade -y
 apt purge mpv
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak install org.mozilla.firefox
