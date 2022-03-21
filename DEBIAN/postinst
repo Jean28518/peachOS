@@ -1,0 +1,2 @@
+chmod +x /usr/lib/peach/update.sh
+chmod +x /usr/lib/peach/install.sh
