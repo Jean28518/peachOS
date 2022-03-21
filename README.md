@@ -3,6 +3,11 @@ Just a small project for yet another linux desktop distro. Very easy Installatio
 
 **Under construction!**
 
+## Concept
+PeachOS want's to make linux accessible for new users. 
+For that many applications will be developed. These aim to be as easy as possible.
+By using ubuntu as a base peachOS will work the widest range of applications and is compatible to one of the most used distro.
+
 ![grafik](https://user-images.githubusercontent.com/39700889/159352692-ac687bad-9d44-4852-a156-04d983d5da79.png)
 
 ## Unique Features (coming soon)
@@ -13,12 +18,7 @@ Just a small project for yet another linux desktop distro. Very easy Installatio
 - Easy Settings Manager with full support of gnome settings
 - (Easy integration of windows VMs)
 
-## Concept
-PeachOS want's to make linux accessible for new users. 
-For that many applications will be developed. These aim to be easiest as possible.
-By using ubuntu as a base peachOS will work the widest range of applications and is compatible to one of the most used distro.
-
-## How to setup peachOS (in development)
+## How to setup peachOS for now (in development)
 - Install newest Ubuntu Desktop LTS version (tested for 20.04 of 22.04)
 - Install the files of this repo.
 - ...
