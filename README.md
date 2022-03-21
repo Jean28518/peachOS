@@ -55,5 +55,6 @@ By using ubuntu as a base peachOS will work the widest range of applications and
 ## How to build peachOS.deb:
 - Download (and unzip) this repository
 - `chmod +x peachOS-main/DEBIAN/postinst`
+- `chmod 755 peachOS-main/DEBIAN`
 - `dpkg-deb --build peachOS-main`
 - Install this .deb package with `sudo dpkg --install peachOS-main.deb`
