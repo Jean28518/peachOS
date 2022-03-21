@@ -1,0 +1,12 @@
+[Unit]
+Description=Peach Update
+
+[Service]
+Type=simple
+RemainAfterExit=no
+WorkingDirectory=/usr/lib/peach
+ExecStart=/usr/lib/peach/update.sh
+TimeoutSec=3600
+
+[Install]
+WantedBy=multi-user.target
