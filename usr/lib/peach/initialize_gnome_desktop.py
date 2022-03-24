@@ -24,7 +24,7 @@ OPTION_FOLDER_CATEGORIES = 'categories'
 APPS_SETTINGS_FOLDER = ['gnome-control-center.desktop', 'software-properties-gtk.desktop', 'org.gnome.Extensions.desktop', 'gnome-language-selector.desktop', 'gnome-session-properties.desktop', 'timeshift-gtk.desktop', 'software-properties-drivers.desktop', 'org.gnome.World.PikaBackup.desktop', 'com.github.tchx84.Flatseal.desktop']
 APPS_UTILITIES_FOLDER = ['io.github.celluloid_player.Celluloid.desktop', 'org.gnome.Terminal.desktop', 'simple-scan.desktop', 'org.gnome.PowerStats.desktop']
 APPS_HIDE = ['htop.desktop', 'info.desktop', 'software-properties-livepatch.desktop', 'vim.desktop']
-APPS_FAVORITES = ['org.mozilla.firefox.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Calendar.desktop', 'org.gnome.Software.desktop']
+AP<PS_FAVORITES = "['org.mozilla.firefox.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Calendar.desktop', 'org.gnome.Software.desktop']"
 
 GNOME_ADDONS = {42 : ['https://extensions.gnome.org/extension-data/gsconnectandyholmes.github.io.v50.shell-extension.zip', 'https://extensions.gnome.org/extension-data/appindicatorsupportrgcjonas.gmail.com.v42.shell-extension.zip']}
 
@@ -56,22 +56,12 @@ def add_app_folder(folder_name, folder_title):
     list_folders.append(folder_name)
     settings_folders.set_strv('folder-children', list_folders)
     
-    elements = je.run_command("gsettings get org.gnome.desktop.app-folders folder-children", print_output=False, return_output=True)
-    os.system("gsettings set org.gnome.desktop.app-folders folder-children \"" + elements[0].replace("]", ", '%s']" % folder_name)+ "\"")
+    add_entry_to_dconf_array("org.gnome.desktop.app-folders", "folder-children", folder_name)
     
 
 def add_entry_to_app_folder(folder_name, entry_name):
     add_entry_to_dconf_array("org.gnome.desktop.app-folders.folder:/org/gnome/desktop/app-folders/folders/%s/" % folder_name, "apps", entry_name)
 
-    # elements = je.run_command("gsettings get org.gnome.desktop.app-folders.folder:/org/gnome/desktop/app-folders/folders/%s/ apps" % folder_name, print_output=False, return_output=True)
-    # element_string = "" 
-    # if elements[0] == "@as []":
-    #     element_string = "['%s']" % entry_name
-    # elif "'%s'" % entry_name in elements[0]:
-    #     return
-    # else:
-    #     element_string = elements[0].replace("]", ", '%s']" % entry_name)
-    # os.system("gsettings set org.gnome.desktop.app-folders.folder:/org/gnome/desktop/app-folders/folders/%s/ apps \"%s\"" % (folder_name, element_string))
 
 def add_entry_to_dconf_array(dconf_path, dconf_key, entry):
     elements = je.run_command("gsettings get %s %s" % (dconf_path, dconf_key), print_output=False, return_output=True)
@@ -83,8 +73,6 @@ def add_entry_to_dconf_array(dconf_path, dconf_key, entry):
     else:
         element_string = elements[0].replace("]", ", '%s']" % entry)
     os.system("gsettings set %s %s \"%s\"" % (dconf_path, dconf_key, element_string))
-
-
 
 
 def set_background_image(absolte_file_path):
@@ -103,6 +91,7 @@ def hide_app_from_menu(desktop_file_name):
     if jfiles.get_value_from_file(local_file_path, "Hidden", "false") == "false":
         jfiles.set_value_in_file(local_file_path, "Hidden", "true")
 
+
 def install_and_activate_gnome_addon(download_link):
     file_name_zip = je.get_filename_of_path(download_link)
     je.download_file(download_link, "/tmp")
@@ -119,6 +108,7 @@ def install_and_activate_gnome_addon(download_link):
 
     add_entry_to_dconf_array("org.gnome.shell", "enabled-extensions", uuid)
     pass
+
 
 def main():
     home_folder = os.environ['HOME']
