@@ -15,3 +15,5 @@ flatpak install org.libreoffice.LibreOffice -y
 flatpak install org.gnome.World.PikaBackup -y
 flatpak install com.github.tchx84.Flatseal -y
 systemctl enable peach-update.service
+
+reboot
