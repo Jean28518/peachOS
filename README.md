@@ -1,5 +1,5 @@
 # peachOS
-Just a small project for yet another linux desktop distro. Very easy Installation and Setup. Based on Ubuntu, Flatpak and Gnome.
+Just a small project for yet another linux desktop distro. Very easy installation and setup. Based on Ubuntu, Flatpak and Gnome.
 
 **Under construction!**
 
@@ -21,18 +21,19 @@ By using ubuntu as a base peachOS will work the widest range of applications and
 ## How to setup peachOS for now (in development)
 - Install newest Ubuntu Desktop LTS version (tested for 20.04 of 22.04) (Choose minimal installation)
 - Install the files of this repo (.deb file available).
-- Run /usr/lib/peach/install.sh
+- `sudo /usr/lib/peach/install.sh`
 
-### SetUp of user workspace:
-- Install these gnome addons
-	- https://extensions.gnome.org/extension/352/middle-click-to-close-in-overview/ (!)
-	- https://extensions.gnome.org/extension/307/dash-to-dock/ (!)
-- Set DashToDock to bottom
-- Run `/usr/lib/peach/initialize_gnome_desktop.py`
 
-## How to build peachOS.deb:
+## How to build and install peachOS.deb:
 - Download (and unzip) this repository
 - `chmod +x peachOS-main/DEBIAN/postinst`
 - `chmod 755 peachOS-main/DEBIAN`
 - `dpkg-deb --build peachOS-main`
-- Install this .deb package with `sudo dpkg --install peachOS-main.deb`
+- `sudo dpkg --install peachOS-main.deb`
+
+## Setup of user workspace:
+- Install these gnome addons
+	- https://extensions.gnome.org/extension/352/middle-click-to-close-in-overview/ (!)
+	- https://extensions.gnome.org/extension/307/dash-to-dock/ (!)
+- Set DashToDock to bottom
+- Everything else will set up automatically
