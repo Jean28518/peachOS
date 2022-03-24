@@ -30,11 +30,6 @@ By using ubuntu as a base peachOS will work the widest range of applications and
 	- https://extensions.gnome.org/extension/352/middle-click-to-close-in-overview/ (!)
 	- https://extensions.gnome.org/extension/307/dash-to-dock/ (!)
 - Set DashToDock to bottom
-- Remove these entries of menu with alacarte:
-  - Livepatch
-  - vim
-  - htop
-  - TexInfo
 - Run `/usr/lib/peach/initialize_gnome_menu.py`
 
 ## How to build peachOS.deb:
