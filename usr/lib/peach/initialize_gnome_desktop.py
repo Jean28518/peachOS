@@ -24,6 +24,7 @@ OPTION_FOLDER_CATEGORIES = 'categories'
 APPS_SETTINGS_FOLDER = ['gnome-control-center.desktop', 'software-properties-gtk.desktop', 'org.gnome.Extensions.desktop', 'gnome-language-selector.desktop', 'gnome-session-properties.desktop', 'timeshift-gtk.desktop', 'software-properties-drivers.desktop', 'org.gnome.World.PikaBackup.desktop', 'com.github.tchx84.Flatseal.desktop']
 APPS_UTILITIES_FOLDER = ['io.github.celluloid_player.Celluloid.desktop', 'org.gnome.Terminal.desktop', 'simple-scan.desktop', 'org.gnome.PowerStats.desktop']
 APPS_HIDE = ['htop.desktop', 'info.desktop', 'software-properties-livepatch.desktop', 'vim.desktop']
+APPS_FAVORITES = ['org.mozilla.firefox.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Calendar.desktop', 'org.gnome.Software.desktop']
 
 GNOME_ADDONS = {42 : ['https://extensions.gnome.org/extension-data/gsconnectandyholmes.github.io.v50.shell-extension.zip', 'https://extensions.gnome.org/extension-data/appindicatorsupportrgcjonas.gmail.com.v42.shell-extension.zip']}
 
@@ -141,6 +142,8 @@ def main():
     if "42" in je.run_command("gnome-shell --version", False, True)[0]:
         for addon in GNOME_ADDONS[42]:
             install_and_activate_gnome_addon(addon)
+    
+    je.run_command("gsettings set org.gnome.shell favorite-apps \"%s\"" % APPS_FAVORITES)
 
 
 if __name__ == "__main__":

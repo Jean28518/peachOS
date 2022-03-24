@@ -1,3 +1,5 @@
 chmod +x /usr/lib/peach/update.sh
 chmod +x /usr/lib/peach/install.sh
-chmod +x /usr/lib/peach/initialize_gnome_menu.py
+chmod +x /usr/lib/peach/initialize_gnome_desktop.py
+
+ln -s /usr/lib/peach/initialize_gnome_desktop.py /usr/bin/init-peach-desktop
