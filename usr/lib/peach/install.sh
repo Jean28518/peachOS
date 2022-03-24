@@ -4,7 +4,7 @@ echo 'Installing peachOS ...'
 apt update 
 apt install vanilla-gnome-desktop -y
 apt purge purge gnome-mahjongg gnome-mines gnome-sudoku cheese gnome-todo gnome-documents gnome-photos deja-dup rhythmbox gnome-music gnome-weather transmission-gtk aislerot dconf-editor usb-creator-gtk update-manager libreoffice* totem firefox ubuntu-session
-apt install flatpak alacarte timeshift celluloid vim htop -y
+apt install flatpak timeshift celluloid vim htop -y
 snap remove firefox
 apt autoremove --purge -y
 apt dist-upgrade -y
