@@ -20,17 +20,15 @@ By using ubuntu as a base peachOS will work the widest range of applications and
 
 ## How to setup peachOS for now (in development)
 - Install newest Ubuntu Desktop LTS version (tested for 20.04 of 22.04) (Choose minimal installation)
-- Install the files of this repo.
+- Install the files of this repo (.deb file available).
 - Run /usr/lib/peach/install.sh
 
 ### SetUp of user workspace:
 - Install these gnome addons
-	- https://extensions.gnome.org/extension/1319/gsconnect/
-	- https://extensions.gnome.org/extension/615/appindicator-support/
 	- https://extensions.gnome.org/extension/352/middle-click-to-close-in-overview/ (!)
 	- https://extensions.gnome.org/extension/307/dash-to-dock/ (!)
 - Set DashToDock to bottom
-- Run `/usr/lib/peach/initialize_gnome_menu.py`
+- Run `/usr/lib/peach/initialize_gnome_desktop.py`
 
 ## How to build peachOS.deb:
 - Download (and unzip) this repository
