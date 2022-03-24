@@ -2,9 +2,11 @@
 
 # app folder code inspired by https://github.com/muflone/gnome-appfolders-manager
 
+from threading import local
 from time import sleep
 from gi.repository import Gio
 import jtools.jessentials as je
+import jtools.jfiles as jfiles
 import os
 
 SCHEMA_FOLDERS = 'org.gnome.desktop.app-folders'
@@ -19,7 +21,7 @@ OPTION_FOLDER_CATEGORIES = 'categories'
 
 APPS_SETTINGS_FOLDER = ['gnome-control-center.desktop', 'software-properties-gtk.desktop', 'org.gnome.Extensions.desktop', 'gnome-language-selector.desktop', 'gnome-session-properties.desktop', 'timeshift-gtk.desktop', 'software-properties-drivers.desktop', 'org.gnome.World.PikaBackup.desktop', 'com.github.tchx84.Flatseal.desktop']
 APPS_UTILITIES_FOLDER = ['io.github.celluloid_player.Celluloid.desktop', 'org.gnome.Terminal.desktop', 'simple-scan.desktop', 'org.gnome.PowerStats.desktop']
-
+APPS_HIDE = ['htop.desktop', 'info.desktop', 'software-properties-livepatch.desktop', 'vim.desktop']
 
 class FolderInfo(object):
     def __init__(self, folder):
@@ -68,6 +70,19 @@ def add_entry_to_app_folder(folder_name, entry_name):
 def set_background_image(absolte_file_path):
     os.system("gsettings set org.gnome.desktop.background picture-uri \"file://%s\"" % absolte_file_path)
 
+
+def hide_app_from_menu(desktop_file_name):
+    home_folder = os.environ['HOME']
+    local_file_path = "%s/.local/share/applications/%s" % (home_folder, desktop_file_name)
+    if jfiles.does_file_exist("/usr/share/applications/%s" % desktop_file_name):
+        if not jfiles.does_file_exist(local_file_path):
+            os.system("cp /usr/share/applications/%s %s" % (desktop_file_name, local_file_path))
+    else:
+        return
+
+    if jfiles.get_value_from_file(local_file_path, "Hidden", "false") == "false":
+        jfiles.set_value_in_file(local_file_path, "Hidden", "true")
+
 def main():
     # App Menu
     if (not "Settings" in je.run_command("gsettings get org.gnome.desktop.app-folders folder-children", print_output=False, return_output=True)[0]):
@@ -81,7 +96,9 @@ def main():
 
     # Set Background
     set_background_image("/usr/share/backgrounds/peach/peach-1.jpg")
-    
+
+    for app in APPS_HIDE:
+        hide_app_from_menu(app)
 
 
 if __name__ == "__main__":
