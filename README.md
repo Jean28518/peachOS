@@ -35,22 +35,7 @@ By using ubuntu as a base peachOS will work the widest range of applications and
   - vim
   - htop
   - TexInfo
-- Create a new Folder in Gnome Menu called "settings" with these entries:
-  - Applications & Updates
-  - Settings
-  - AddOns
-  - Language
-  - StartUp Programms
-  - Additional Drivers
-  - Timeshift
-  - Pika BackUp
-  - Flatseal
-- Move these entries to Folder "Utilities":
-  - Terminal
-  - Celluloid
-  - Document Scanner
-  - Energy Statistics
-- Set gnome backgroud to the background in `/usr/share/backgrouds/peach/peach-1.png`
+- Run `/usr/lib/peach/initialize_gnome_menu.py`
 
 ## How to build peachOS.deb:
 - Download (and unzip) this repository
