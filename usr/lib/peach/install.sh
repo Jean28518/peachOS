@@ -8,9 +8,9 @@ apt install flatpak timeshift celluloid vim htop -y
 snap remove firefox
 apt autoremove --purge -y
 apt dist-upgrade -y
-apt purge mpv
+apt purge mpv -y
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-flatpak install org.mozilla.firefox
+flatpak install org.mozilla.firefox -y
 flatpak install org.libreoffice.LibreOffice -y
 flatpak install org.gnome.World.PikaBackup -y
 flatpak install com.github.tchx84.Flatseal -y
