@@ -121,6 +121,10 @@ def install_and_activate_gnome_addon(download_link):
     pass
 
 def main():
+    home_folder = os.environ['HOME']
+    if je.does_file_exist("%s/.config/peach/desktop_initialized" % home_folder):
+        return
+
     # App Menu
     if (not "Settings" in je.run_command("gsettings get org.gnome.desktop.app-folders folder-children", print_output=False, return_output=True)[0]):
         add_app_folder("Settings", "Settings")
@@ -144,6 +148,11 @@ def main():
             install_and_activate_gnome_addon(addon)
     
     je.run_command("gsettings set org.gnome.shell favorite-apps \"%s\"" % APPS_FAVORITES)
+
+
+    # Save execution 
+    jfolders.touch_folder("%s/.config/peach/" % home_folder)
+    jfiles.write_lines_to_file("%s/.config/peach/desktop_initialized" % home_folder, ["true"])
 
 
 if __name__ == "__main__":
