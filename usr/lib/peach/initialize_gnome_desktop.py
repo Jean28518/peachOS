@@ -107,7 +107,9 @@ def install_and_activate_gnome_addon(download_link):
     je.run_command("mv %s %s/.local/share/gnome-shell/extensions/%s" % (tmp_folder_location, home_folder, uuid))
 
     add_entry_to_dconf_array("org.gnome.shell", "enabled-extensions", uuid)
-    pass
+    
+    os.system("rm -r tmp_folder_location")
+    os.system("rm /tmp/%s"% file_name_zip)
 
 
 def main():
