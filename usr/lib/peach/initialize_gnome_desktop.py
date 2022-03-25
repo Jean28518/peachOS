@@ -108,7 +108,7 @@ def install_and_activate_gnome_addon(download_link):
 
     add_entry_to_dconf_array("org.gnome.shell", "enabled-extensions", uuid)
     
-    os.system("rm -r tmp_folder_location")
+    os.system("rm -r %s" % tmp_folder_location)
     os.system("rm /tmp/%s"% file_name_zip)
 
 
