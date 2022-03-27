@@ -4,6 +4,3 @@ Name=Init Peach Desktop
 Comment=Initialization of peach desktop for gnome
 Exec=/usr/lib/peach/initialize_gnome_desktop.py
 OnlyShowIn=GNOME
-X-GNOME-Autostart-Phase=PreDisplayServer
-X-GNOME-AutoRestart=false
-X-GNOME-Autostart-Notify=true
