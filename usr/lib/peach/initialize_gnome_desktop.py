@@ -116,7 +116,12 @@ def main():
     home_folder = os.environ['HOME']
     if je.does_file_exist("%s/.config/peach/desktop_initialized" % home_folder):
         return
-
+    
+    # Set Background
+    set_background_image("/usr/share/backgrounds/peach/peach-1.jpg")
+    
+    sleep(5)
+    
     # App Menu
     if (not "Settings" in je.run_command("gsettings get org.gnome.desktop.app-folders folder-children", print_output=False, return_output=True)[0]):
         add_app_folder("Settings", "Settings")
@@ -127,20 +132,17 @@ def main():
     for app in APPS_UTILITIES_FOLDER:
         add_entry_to_app_folder("Utilities", app)
 
-    # Set Background
-    set_background_image("/usr/share/backgrounds/peach/peach-1.jpg")
-
     # Hide Apps
     for app in APPS_HIDE:
         hide_app_from_menu(app)
 
-    
+    # Gnome Extensions
+    os.system("gsettings set org.gnome.shell disable-user-extensions false")
     if "42" in je.run_command("gnome-shell --version", False, True)[0]:
         for addon in GNOME_ADDONS[42]:
             install_and_activate_gnome_addon(addon)
     
     os.system("gsettings set org.gnome.shell favorite-apps \"%s\"" % APPS_FAVORITES)
-
 
     # Save execution 
     jfolders.touch_folder("%s/.config/peach/" % home_folder)
